@@ -5,7 +5,7 @@ class BooklyAppBar extends StatelessWidget {
   const BooklyAppBar({
     super.key,
     this.title = 'Keep exploring',
-    this.icon = Icons.person_2_outlined,
+    this.icon = FontAwesomeIcons.circleUser,
     this.onPressed,
     this.showBackArrow = false,
   });
@@ -17,8 +17,8 @@ class BooklyAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(top: 24, left: 16, right: 16),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
       child: Row(
         children: [
           if (showBackArrow)
@@ -35,7 +35,7 @@ class BooklyAppBar extends StatelessWidget {
               onPressed: () {
                 return Scaffold.of(context).openDrawer();
               },
-              iconSize: 24,
+              iconSize: 32,
             ),
           const SizedBox(width: 16),
           Expanded(

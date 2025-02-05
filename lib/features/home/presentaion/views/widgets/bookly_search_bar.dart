@@ -46,6 +46,8 @@ class _BooklySearchBarState extends State<BooklySearchBar> {
             ),
           ),
           Container(
+              width: 50,
+              height: 50,
               decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.primary,
                   borderRadius: const BorderRadius.all(Radius.circular(16)),
@@ -58,9 +60,9 @@ class _BooklySearchBarState extends State<BooklySearchBar> {
                   ]),
               child: IconButton(
                 icon: const Icon(FontAwesomeIcons.magnifyingGlass),
-                color: Theme.of(context).colorScheme.onSecondary,
+                color: Theme.of(context).colorScheme.secondary,
                 onPressed: () {},
-                iconSize: 32,
+                iconSize: 24,
               )),
         ],
       ),
