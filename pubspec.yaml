@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.17
+  font_awesome_flutter: ^10.8.0
   get: ^4.6.6
 
 dev_dependencies:
@@ -22,3 +23,19 @@ flutter:
 
   assets:
     - assets/images/splash/
+
+  fonts:
+    - family: KeplerStd
+      fonts:
+        - asset: assets/fonts/kepler/KeplerStdLight.otf
+          weight: 300
+        - asset: assets/fonts/kepler/KeplerStdRegular.otf
+          weight: 400
+        - asset: assets/fonts/kepler/KeplerStdMedium.otf
+          weight: 500
+        - asset: assets/fonts/kepler/KeplerStdSemibold.otf
+          weight: 600
+        - asset: assets/fonts/kepler/KeplerStdBold.otf
+          weight: 700
+        - asset: assets/fonts/kepler/KeplerStdBlack.otf
+          weight: 900
