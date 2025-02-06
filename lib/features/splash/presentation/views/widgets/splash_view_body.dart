@@ -118,8 +118,8 @@ class _SplashViewBodyState extends State<SplashViewBody>
                     scale: _buttonScaleAnimation,
                     child: FloatingActionButton(
                       onPressed: () {
-                        Get.to(const HomeView(),
-                            transition: Transition.rightToLeft);
+                        Get.to(() => const HomeView(),
+                            transition: Transition.rightToLeftWithFade);
                       },
                       shape: const StadiumBorder(),
                       child: const Icon(Icons.arrow_forward_rounded),

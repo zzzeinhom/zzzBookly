@@ -12,7 +12,6 @@ class BookCoverList extends StatelessWidget {
       height: 250,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
         physics: const BouncingScrollPhysics(),
         itemCount: 10,
         itemBuilder: (context, index) => const Padding(

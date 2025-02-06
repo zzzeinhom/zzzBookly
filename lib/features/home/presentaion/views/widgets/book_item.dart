@@ -57,7 +57,7 @@ class BookItem extends StatelessWidget {
                   children: [
                     Text(
                       '\$10.99',
-                      style: Theme.of(context).textTheme.labelMedium,
+                    style: Theme.of(context).textTheme.labelMedium,
                     ),
                     const BookRate()
                   ],
