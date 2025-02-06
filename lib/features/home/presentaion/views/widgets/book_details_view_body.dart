@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:zzzbookly/features/home/presentaion/views/widgets/book_cover_card.dart';
-import 'package:zzzbookly/features/home/presentaion/views/widgets/book_cover_card_list.dart';
-import 'package:zzzbookly/features/home/presentaion/views/widgets/book_details_widgets.dart';
-import 'package:zzzbookly/features/home/presentaion/views/widgets/book_rate.dart';
+import 'package:zzzbookly/features/home/presentaion/views/widgets/book_details_buttons.dart';
+import 'package:zzzbookly/features/home/presentaion/views/widgets/book_header_container.dart';
 import 'package:zzzbookly/features/home/presentaion/views/widgets/bookly_app_bar.dart';
-import 'package:zzzbookly/features/home/presentaion/views/widgets/widget_headline.dart';
+import 'package:zzzbookly/features/home/presentaion/views/widgets/bookly_tabbar.dart';
 
 class BookDetailsBody extends StatefulWidget {
   const BookDetailsBody({super.key});
@@ -52,214 +50,25 @@ class _BookDetailsBodyState extends State<BookDetailsBody>
               ),
               SliverPersistentHeader(
                 pinned: true,
-                delegate: _TabBarDelegate(
-                  TabBar(
-                    controller: _tabController,
-                    labelPadding: EdgeInsets.zero,
-                    labelColor: Theme.of(context).colorScheme.primary,
-                    unselectedLabelColor:
-                        Theme.of(context).colorScheme.onSecondary,
-                    indicatorColor: Theme.of(context).colorScheme.primary,
-                    tabs: const [
-                      Tab(text: 'Overview'),
-                      Tab(text: 'Details'),
-                    ],
-                  ),
+                delegate: TabBarDelegate(
+                  BooklyTabBar(tabController: _tabController) as TabBar,
                 ),
               ),
             ],
-            body: TabBarView(
-              controller: _tabController,
-              children: [
-                SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "About Book",
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
-                      const SizedBox(height: 16),
-                      Text(lorem, style: Theme.of(context).textTheme.bodyLarge),
-                      const SizedBox(height: 16),
-                      Divider(
-                          color: Theme.of(context).colorScheme.tertiary,
-                          thickness: 1.5),
-                      Text(
-                        "You may also like",
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
-                      const BookCoverList(
-                        height: 200,
-                      ),
-                      const SizedBox(height: 40),
-                    ],
-                  ),
-                ),
-                SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    children: [
-                      Text(lorem, style: Theme.of(context).textTheme.bodyLarge),
-                      const SizedBox(height: 40),
-                    ],
-                  ),
-                ),
-              ],
+            body: BooklyTabBarView(
+              tabController: _tabController,
+              overview: lorem,
+              details: lorem,
             ),
           ),
           Positioned(
             bottom: 16,
             left: 16,
             right: 16,
-            child: _BottomButtons(context: context),
+            child: BottomButtons(context: context),
           ),
         ],
       ),
-    );
-  }
-}
-
-class _TabBarDelegate extends SliverPersistentHeaderDelegate {
-  final TabBar tabBar;
-
-  _TabBarDelegate(this.tabBar);
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return Container(
-      color: Theme.of(context).scaffoldBackgroundColor,
-      child: tabBar,
-    );
-  }
-
-  @override
-  double get maxExtent => tabBar.preferredSize.height;
-
-  @override
-  double get minExtent => tabBar.preferredSize.height;
-
-  @override
-  bool shouldRebuild(_TabBarDelegate oldDelegate) => false;
-}
-
-class _BottomButtons extends StatelessWidget {
-  final BuildContext context;
-
-  const _BottomButtons({required this.context});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: TextButton(
-            style: _buttonStyle(
-              context,
-              left: 16,
-              color: Theme.of(context).colorScheme.primary,
-            ),
-            onPressed: () {},
-            child: const Text(
-              "Buy Now",
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        ),
-        Expanded(
-          child: TextButton(
-            style: _buttonStyle(
-              context,
-              right: 16,
-              color: Theme.of(context).colorScheme.tertiary,
-            ),
-            onPressed: () {},
-            child: Text(
-              "Free Preview",
-              style: TextStyle(color: Theme.of(context).colorScheme.primary),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  ButtonStyle _buttonStyle(BuildContext context,
-      {double? left, double? right, required Color color}) {
-    return TextButton.styleFrom(
-      backgroundColor: color,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(left != null ? 16 : 0),
-          bottomLeft: Radius.circular(left != null ? 16 : 0),
-          topRight: Radius.circular(right != null ? 16 : 0),
-          bottomRight: Radius.circular(right != null ? 16 : 0),
-        ),
-      ),
-      minimumSize: const Size(0, 48),
-    );
-  }
-}
-
-class BookHeaderContainer extends StatelessWidget {
-  const BookHeaderContainer({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none, // Allows overflow for the elevated card
-      children: [
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          width: MediaQuery.of(context).size.width,
-          height: 180,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            color: Theme.of(context).colorScheme.tertiary,
-          ),
-        ),
-        Positioned(
-          left: 30,
-          top: -34,
-          bottom: 20,
-          child: Container(
-            height: 250,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: const BookCoverCard(),
-          ),
-        ),
-        Positioned(
-          top: 50,
-          left: 180,
-          right: 24,
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width * 0.5,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const BookName(),
-                const SizedBox(height: 4),
-                const AuthorName(),
-                const SizedBox(height: 8),
-                const ReleaseDate(),
-                BookRate(
-                  textStyle: Theme.of(context).textTheme.displayMedium,
-                  iconSize: 20,
-                )
-              ],
-            ),
-          ),
-        ),
-      ],
     );
   }
 }
