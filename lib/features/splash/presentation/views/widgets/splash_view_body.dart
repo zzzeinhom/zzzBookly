@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:zzzbookly/consts/data.dart';
-import 'package:zzzbookly/features/home/presentaion/views/home_view.dart';
+import 'package:go_router/go_router.dart';
+import 'package:zzzbookly/core/utils/app_router.dart';
+import 'package:zzzbookly/core/utils/data.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -118,8 +117,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
                     scale: _buttonScaleAnimation,
                     child: FloatingActionButton(
                       onPressed: () {
-                        Get.to(() => const HomeView(),
-                            transition: Transition.rightToLeftWithFade);
+                        GoRouter.of(context).push(AppRouter.kHomeView);
                       },
                       shape: const StadiumBorder(),
                       child: const Icon(Icons.arrow_forward_rounded),

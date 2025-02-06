@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zzzbookly/consts/data.dart';
+import 'package:zzzbookly/core/utils/data.dart';
 
 class BookCoverCard extends StatelessWidget {
   const BookCoverCard({
