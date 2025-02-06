@@ -17,42 +17,51 @@ class BooklyAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-      child: Row(
-        children: [
-          if (showBackArrow)
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+        child: Row(
+          children: [
+            if (showBackArrow)
+              IconButton(
+                icon: Icon(
+                  FontAwesomeIcons.chevronLeft,
+                  color: Theme.of(context).colorScheme.onSecondary,
+                ),
+                onPressed: () => Navigator.pop(context),
+                iconSize: 32,
+              ),
+            if (!showBackArrow)
+              IconButton(
+                icon: Icon(
+                  FontAwesomeIcons.bars,
+                  color: Theme.of(context).colorScheme.onSecondary,
+                ),
+                onPressed: () {
+                  return Scaffold.of(context).openDrawer();
+                },
+                iconSize: 32,
+              ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Text(
+                title,
+                style: Theme.of(context).textTheme.headlineLarge,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
             IconButton(
-              icon: const Icon(Icons.arrow_back),
+              icon: Icon(
+                icon,
+                color: Theme.of(context).colorScheme.onSecondary,
+              ),
               color: Theme.of(context).colorScheme.onSecondary,
-              onPressed: () => Navigator.pop(context),
+              onPressed: onPressed,
               iconSize: 32,
             ),
-          if (!showBackArrow)
-            IconButton(
-              icon: const Icon(FontAwesomeIcons.bars),
-              color: Theme.of(context).colorScheme.onSecondary,
-              onPressed: () {
-                return Scaffold.of(context).openDrawer();
-              },
-              iconSize: 32,
-            ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Text(
-              title,
-              style: Theme.of(context).textTheme.headlineLarge,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-          IconButton(
-            icon: Icon(icon),
-            color: Theme.of(context).colorScheme.onSecondary,
-            onPressed: onPressed,
-            iconSize: 32,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

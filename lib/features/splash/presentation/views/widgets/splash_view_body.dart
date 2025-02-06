@@ -15,7 +15,6 @@ class _SplashViewBodyState extends State<SplashViewBody>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _opacityAnimation;
-  late Animation<double> _buttonScaleAnimation;
   late Animation<Offset> _slideAnimation;
 
   @override
@@ -40,13 +39,6 @@ class _SplashViewBodyState extends State<SplashViewBody>
       CurvedAnimation(
         parent: _controller,
         curve: Curves.easeOut,
-      ),
-    );
-
-    _buttonScaleAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.elasticOut,
       ),
     );
 
@@ -113,15 +105,13 @@ class _SplashViewBodyState extends State<SplashViewBody>
                     style: Theme.of(context).textTheme.labelSmall,
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-                  ScaleTransition(
-                    scale: _buttonScaleAnimation,
-                    child: FloatingActionButton(
-                      onPressed: () {
-                        GoRouter.of(context).push(AppRouter.kHomeView);
-                      },
-                      shape: const StadiumBorder(),
-                      child: const Icon(Icons.arrow_forward_rounded),
-                    ),
+                  FloatingActionButton(
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    onPressed: () {
+                      GoRouter.of(context).push(AppRouter.kHomeView);
+                    },
+                    shape: const StadiumBorder(),
+                    child: const Icon(Icons.arrow_forward_rounded),
                   ),
                 ],
               ),
