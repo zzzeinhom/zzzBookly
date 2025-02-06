@@ -4,12 +4,13 @@ import 'package:zzzbookly/features/home/presentaion/views/widgets/book_cover_car
 class BookCoverList extends StatelessWidget {
   const BookCoverList({
     super.key,
+    this.height = 250,
   });
-
+  final double? height;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 250,
+      height: height,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),

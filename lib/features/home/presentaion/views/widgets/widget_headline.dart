@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 
 class WidgetHeadline extends StatelessWidget {
   const WidgetHeadline(
-      {super.key, required this.title, required this.onSeeAll});
+      {super.key,
+      required this.title,
+      required this.onSeeAll,
+      this.hasSeeAll = true});
 
   final String title;
   final Function() onSeeAll;
+  final bool hasSeeAll;
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +23,14 @@ class WidgetHeadline extends StatelessWidget {
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
-        TextButton(
+        if (hasSeeAll)
+          TextButton(
             onPressed: onSeeAll,
             child: Text(
-              "See all",
-              style: Theme.of(context).textTheme.titleSmall,
-            )),
+              "See All",
+              style: Theme.of(context).textTheme.labelLarge,
+            ),
+          ),
       ],
     );
   }
