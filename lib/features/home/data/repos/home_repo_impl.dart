@@ -13,11 +13,12 @@ class HomeRepoImpl implements HomeRepo {
   @override
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
-      List<BookModel> result = await apiService
-          .get(
-              'volumes?filter=free-ebooks&orderBy=relevance&q=subject:self_help+self_development')
-          .then((value) =>
-              value['items'].map((e) => BookModel.fromJson(e)).toList());
+      var data = await apiService.get(
+          'volumes?filter=free-ebooks&orderBy=relevance&q=subject:self_help+self_development');
+      List<BookModel> result = [];
+      for (var item in data['items']) {
+        result.add(BookModel.fromJson(item));
+      }
 
       return Right(result);
     } catch (e) {

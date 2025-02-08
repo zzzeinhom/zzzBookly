@@ -1,25 +1,23 @@
-
 import 'package:equatable/equatable.dart';
 import 'package:zzzbookly/features/home/data/models/book_model/book_model.dart';
 
-sealed class FeaturedBookState extends Equatable {
-  const FeaturedBookState();
+sealed class FeaturedBooksState extends Equatable {
+  const FeaturedBooksState();
 
   @override
   List<Object> get props => [];
 }
 
-final class FeaturedBookInitial extends FeaturedBookState {}
+final class FeaturedBooksInitial extends FeaturedBooksState {}
 
-final class FeaturedBookLoading extends FeaturedBookState {}
+final class FeaturedBooksLoading extends FeaturedBooksState {}
 
-final class FeaturedBookSuccess extends FeaturedBookState {
+final class FeaturedBooksSuccess extends FeaturedBooksState {
   final List<BookModel> books;
-  const FeaturedBookSuccess(this.books);
+  const FeaturedBooksSuccess(this.books);
 }
 
-final class FeaturedBookFailure extends FeaturedBookState {
+final class FeaturedBooksFailure extends FeaturedBooksState {
   final String errMessage;
-  const FeaturedBookFailure(this.errMessage);
+  const FeaturedBooksFailure(this.errMessage);
 }
-
