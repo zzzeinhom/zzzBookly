@@ -24,7 +24,7 @@ class HomeRepoImpl implements HomeRepo {
       if (e is DioException) {
         return Left(ServerFailure.fromDioError(e));
       } else {
-        return Left(ServerFailure(message: e.toString()));
+        return Left(ServerFailure(errMessage: e.toString()));
       }
     }
   }
@@ -43,7 +43,7 @@ class HomeRepoImpl implements HomeRepo {
       if (e is DioException) {
         return Left(ServerFailure.fromDioError(e));
       } else {
-        return Left(ServerFailure(message: e.toString()));
+        return Left(ServerFailure(errMessage: e.toString()));
       }
     }
   }
