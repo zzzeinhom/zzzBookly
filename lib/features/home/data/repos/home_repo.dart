@@ -4,6 +4,5 @@ import 'package:zzzbookly/features/home/data/models/book_model/book_model.dart';
 
 abstract class HomeRepo {
   Future<Either<Failure, List<BookModel>>> fetchTrandingBooks();
-  Future<Either<Failure, List<BookModel>>> fetchMyFavoriteBooks();
+  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks();
 }
-

@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
 
 class APIService {
-  static String baseUrl = 'https://www.googleapis.com/books/v1/';
-  final Dio dio;
+  static const String _baseUrl = 'https://www.googleapis.com/books/v1/';
+  final Dio _dio;
 
-  APIService({required this.dio});
+  APIService(this._dio);
 
-  Future<Map<String, dynamic>> get(String url) async{
-    return await dio.get(baseUrl + url).then((value) => value.data); 
+  Future<Map<String, dynamic>> get(String url) async {
+    return await _dio.get(_baseUrl + url).then((value) => value.data);
   }
 }
