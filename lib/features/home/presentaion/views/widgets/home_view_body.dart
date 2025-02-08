@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:zzzbookly/core/utils/app_router.dart';
 import 'package:zzzbookly/features/home/presentaion/views/widgets/book_cover_card_list.dart';
 import 'package:zzzbookly/features/home/presentaion/views/widgets/book_item_list.dart';
 import 'package:zzzbookly/features/home/presentaion/views/widgets/bookly_app_bar.dart';
@@ -19,12 +21,16 @@ class HomeViewBody extends StatelessWidget {
               const BooklySearchBar(),
               WidgetHeadline(
                 title: 'Trending books',
-                onSeeAll: () {},
+                onSeeAll: () {
+                  GoRouter.of(context).push(AppRouter.kFetchBooks);
+                },
               ),
               const BookCoverList(),
               WidgetHeadline(
                 title: 'My favourites',
-                onSeeAll: () {},
+                onSeeAll: () {
+                  GoRouter.of(context).push(AppRouter.kFetchBooks);
+                },
               ),
             ],
           ),

@@ -51,7 +51,18 @@ class _BookDetailsBodyState extends State<BookDetailsBody>
               SliverPersistentHeader(
                 pinned: true,
                 delegate: TabBarDelegate(
-                  BooklyTabBar(tabController: _tabController) as TabBar,
+                  TabBar(
+                    controller: _tabController,
+                    labelPadding: EdgeInsets.zero,
+                    labelColor: Theme.of(context).colorScheme.primary,
+                    unselectedLabelColor:
+                        Theme.of(context).colorScheme.onSecondary,
+                    indicatorColor: Theme.of(context).colorScheme.primary,
+                    tabs: const [
+                      Tab(text: 'Overview'),
+                      Tab(text: 'Details'),
+                    ],
+                  ),
                 ),
               ),
             ],

@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:zzzbookly/features/fetch_books/presentation/views/listing_books_view.dart';
 import 'package:zzzbookly/features/home/presentaion/views/book_details_view.dart';
 import 'package:zzzbookly/features/home/presentaion/views/home_view.dart';
 import 'package:zzzbookly/features/splash/presentation/views/splash_view.dart';
@@ -7,6 +8,7 @@ abstract class AppRouter {
   static const kSplashView = '/';
   static const kHomeView = '/homeView';
   static const kBookDetailsView = '/bookDetailsView';
+  static const kFetchBooks = '/fetchBooks';
 
   static final GoRouter router = GoRouter(
     routes: [
@@ -18,6 +20,9 @@ abstract class AppRouter {
       GoRoute(
           path: kBookDetailsView,
           builder: (context, state) => const BookDetails()),
+      GoRoute(
+          path: kFetchBooks,
+          builder: (context, state) => const ListingBooksView()),
     ],
   );
 }
