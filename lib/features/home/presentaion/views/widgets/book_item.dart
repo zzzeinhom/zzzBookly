@@ -6,9 +6,10 @@ import 'package:zzzbookly/features/home/presentaion/views/widgets/book_rate.dart
 
 class BookItem extends StatelessWidget {
   const BookItem({
-    super.key,
+    super.key, required this.imageUrl,
   });
 
+  final String imageUrl;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -29,7 +30,7 @@ class BookItem extends StatelessWidget {
               ),
             ]),
         child: Row(children: [
-          const BookCoverCard(),
+          BookCoverCard(imageUrl: imageUrl,),
           const SizedBox(
             width: 16,
           ),

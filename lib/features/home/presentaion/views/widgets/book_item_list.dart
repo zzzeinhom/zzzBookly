@@ -15,9 +15,14 @@ class BookItemList extends StatelessWidget {
       builder: (context, state) {
         if (state is FeaturedBooksSuccess) {
           return SliverList.builder(
-              itemBuilder: (context, index) => const Padding(
-                  padding: EdgeInsets.all(8.0), child: BookItem()),
-              itemCount: 10);
+            itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: BookItem(
+                  imageUrl:
+                      state.books[index].volumeInfo!.imageLinks!.thumbnail!,
+                )),
+            itemCount: state.books.length,
+          );
         } else if (state is FeaturedBooksFailure) {
           return SliverToBoxAdapter(
             child: Center(

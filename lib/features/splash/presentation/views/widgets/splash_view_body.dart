@@ -62,14 +62,16 @@ class _SplashViewBodyState extends State<SplashViewBody>
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // Constrained Image with Max Size
-          SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(
-                maxWidth: 500, // Set maximum width
-                maxHeight: 500, // Set maximum height
+          SafeArea(
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  maxWidth: 500, // Set maximum width
+                  maxHeight: 500, // Set maximum height
+                ),
+                child: const Image(image: AssetImage(AssetsData.splash)),
               ),
-              child: const Image(image: AssetImage(AssetsData.splash)),
             ),
           ),
 
@@ -78,42 +80,45 @@ class _SplashViewBodyState extends State<SplashViewBody>
             position: _slideAnimation,
             child: FadeTransition(
               opacity: _opacityAnimation,
-              child: Column(
-                children: [
-                  Text(
-                    "Keep reading,",
-                    style: Theme.of(context).textTheme.headlineLarge,
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                  Text(
-                    "You 'll fall in love",
-                    style: Theme.of(context).textTheme.headlineLarge,
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-                  Text(
-                    "A library of bite-size bussiness eBooks on soft skills",
-                    style: Theme.of(context).textTheme.labelSmall,
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                  Text(
-                    "and personal development by industy-leading",
-                    style: Theme.of(context).textTheme.labelSmall,
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                  Text(
-                    "experts through just one subscription",
-                    style: Theme.of(context).textTheme.labelSmall,
-                  ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-                  FloatingActionButton(
-                    backgroundColor: Theme.of(context).colorScheme.primary,
-                    onPressed: () {
-                      GoRouter.of(context).push(AppRouter.kHomeView);
-                    },
-                    shape: const StadiumBorder(),
-                    child: const Icon(Icons.arrow_forward_rounded),
-                  ),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Text(
+                      "Keep reading,",
+                      style: Theme.of(context).textTheme.headlineLarge,
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                    Text(
+                      "You 'll fall in love",
+                      style: Theme.of(context).textTheme.headlineLarge,
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+                    Text(
+                      "A library of bite-size eBooks on soft skills",
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                    Text(
+                      "and personal development by industy-leading",
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                    Text(
+                      "experts through just one subscription",
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+                    FloatingActionButton(
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      onPressed: () {
+                        GoRouter.of(context).push(AppRouter.kHomeView);
+                      },
+                      shape: const StadiumBorder(),
+                      child: const Icon(Icons.arrow_forward_rounded),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:zzzbookly/core/utils/data.dart';
 
 class BookCoverCard extends StatelessWidget {
   const BookCoverCard({
     super.key,
+    this.imageUrl = "https://picsum.photos/200/300",
   });
+
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +15,10 @@ class BookCoverCard extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: 1 / 1.5,
         child: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage(AssetsData.test_cover), fit: BoxFit.cover),
-            borderRadius: BorderRadius.all(Radius.circular(16)),
+                image: NetworkImage(imageUrl), fit: BoxFit.cover),
+            borderRadius: const BorderRadius.all(Radius.circular(16)),
           ),
         ),
       ),
