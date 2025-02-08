@@ -20,7 +20,7 @@ class ListingBooksViewBody extends StatelessWidget {
               ),
               if (search) const BooklySearchBar(),
             ],
-          ),
+          ), 
         ),
         const BookItemList(),
       ],
