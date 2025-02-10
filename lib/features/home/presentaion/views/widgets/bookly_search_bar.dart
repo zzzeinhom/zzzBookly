@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../../../../core/utils/app_router.dart';
 
 class BooklySearchBar extends StatefulWidget {
   const BooklySearchBar({super.key});
@@ -9,7 +12,7 @@ class BooklySearchBar extends StatefulWidget {
 }
 
 class _BooklySearchBarState extends State<BooklySearchBar> {
-  String query = '';
+  String query = "";
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,7 +40,13 @@ class _BooklySearchBarState extends State<BooklySearchBar> {
                   query = value;
                 });
               },
-              onSubmitted: (value) {},
+              onSubmitted: (value) {
+                setState(() {
+                  query = value;
+                });
+                FocusManager.instance.primaryFocus?.unfocus();
+                GoRouter.of(context).push(AppRouter.kSearchBooks, extra: query);
+              },
               decoration: InputDecoration(
                 hintText: "Search your books",
                 hintStyle: Theme.of(context).textTheme.labelLarge,
@@ -61,7 +70,10 @@ class _BooklySearchBarState extends State<BooklySearchBar> {
               child: IconButton(
                 icon: const Icon(FontAwesomeIcons.magnifyingGlass),
                 color: Theme.of(context).colorScheme.secondary,
-                onPressed: () {},
+                onPressed: () {
+                  FocusManager.instance.primaryFocus?.unfocus();
+                  GoRouter.of(context).push(AppRouter.kSearchBooks, extra: query);
+                },
                 iconSize: 24,
               )),
         ],

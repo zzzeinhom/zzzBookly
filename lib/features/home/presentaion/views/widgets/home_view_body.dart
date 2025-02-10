@@ -22,14 +22,14 @@ class HomeViewBody extends StatelessWidget {
               WidgetHeadline(
                 title: 'Trending books',
                 onSeeAll: () {
-                  GoRouter.of(context).push(AppRouter.kFetchBooks);
+                  GoRouter.of(context).push(AppRouter.kSearchBooks, extra: "");
                 },
               ),
               const BookCoverList(),
               WidgetHeadline(
                 title: 'My favourites',
                 onSeeAll: () {
-                  GoRouter.of(context).push(AppRouter.kFetchBooks);
+                  GoRouter.of(context).push(AppRouter.kSearchBooks, extra: "");
                 },
               ),
             ],
