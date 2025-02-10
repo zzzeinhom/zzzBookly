@@ -17,9 +17,7 @@ class BookItemList extends StatelessWidget {
           return SliverList.builder(
             itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: BookItem(
-                  imageUrl:
-                      state.books[index].volumeInfo!.imageLinks!.thumbnail!,
+                child: BookItem(bookModel: state.books[index],
                 )),
             itemCount: state.books.length,
           );

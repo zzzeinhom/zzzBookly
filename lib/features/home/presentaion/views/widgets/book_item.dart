@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zzzbookly/core/utils/app_router.dart';
+import 'package:zzzbookly/features/home/data/models/book_model/book_model.dart';
 import 'package:zzzbookly/features/home/presentaion/views/widgets/book_cover_card.dart';
 import 'package:zzzbookly/features/home/presentaion/views/widgets/book_rate.dart';
 
 class BookItem extends StatelessWidget {
   const BookItem({
-    super.key, required this.imageUrl,
+    super.key, required this.bookModel,
   });
-
-  final String imageUrl;
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -30,7 +30,7 @@ class BookItem extends StatelessWidget {
               ),
             ]),
         child: Row(children: [
-          BookCoverCard(imageUrl: imageUrl,),
+          BookCoverCard(imageUrl: bookModel.volumeInfo!.imageLinks!.thumbnail,),
           const SizedBox(
             width: 16,
           ),
@@ -42,7 +42,7 @@ class BookItem extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.5,
                     child: Text(
-                      'PRINCESS FREEDOM',
+                      bookModel.volumeInfo!.title!,
                       style: Theme.of(context).textTheme.titleMedium,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -52,25 +52,16 @@ class BookItem extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.5,
                     child: Text(
-                      'By GRIGORII ARCHEMBALD',
+                      'By ${bookModel.volumeInfo!.authors?.join(", ")}',
                       style: Theme.of(context).textTheme.labelMedium,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   const SizedBox(height: 4),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        '\$10.99',
-                        style: Theme.of(context).textTheme.labelSmall,
-                      ),
-                      BookRate(
-                        textStyle: Theme.of(context).textTheme.labelSmall,
-                        iconSize: 16,
-                      )
-                    ],
+                  BookRate(
+                    textStyle: Theme.of(context).textTheme.labelSmall,
+                    iconSize: 16,
                   )
                 ]),
           )

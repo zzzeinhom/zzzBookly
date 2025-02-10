@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 
 class BookCoverCard extends StatelessWidget {
   const BookCoverCard({
-    super.key,
-    this.imageUrl = "https://picsum.photos/200/300",
+    super.key, required this.imageUrl,
   });
 
-  final String imageUrl;
+  final String? imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,7 @@ class BookCoverCard extends StatelessWidget {
               Radius.circular(16),
             ),
             child: CachedNetworkImage(
-              imageUrl: imageUrl,
+              imageUrl: imageUrl ?? "",
               fit: BoxFit.cover,
               errorWidget: (context, url, error) =>
                   const Icon(Icons.error_outline, size: 40),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:zzzbookly/features/home/presentaion/views/widgets/book_details_buttons.dart';
-import 'package:zzzbookly/features/home/presentaion/views/widgets/book_header_container.dart';
 import 'package:zzzbookly/features/home/presentaion/views/widgets/bookly_app_bar.dart';
 import 'package:zzzbookly/features/home/presentaion/views/widgets/bookly_tabbar.dart';
 
@@ -44,7 +43,7 @@ class _BookDetailsBodyState extends State<BookDetailsBody>
                       icon: FontAwesomeIcons.cartShopping,
                     ),
                     SizedBox(height: 40),
-                    BookHeaderContainer(),
+                    // BookHeaderContainer(),
                   ],
                 ),
               ),

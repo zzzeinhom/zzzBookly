@@ -1,13 +1,16 @@
 
 import 'package:flutter/material.dart';
+import 'package:zzzbookly/features/home/data/models/book_model/book_model.dart';
 import 'package:zzzbookly/features/home/presentaion/views/widgets/book_cover_card.dart';
 import 'package:zzzbookly/features/home/presentaion/views/widgets/book_details_widgets.dart';
 import 'package:zzzbookly/features/home/presentaion/views/widgets/book_rate.dart';
 
 class BookHeaderContainer extends StatelessWidget {
   const BookHeaderContainer({
-    super.key,
+    super.key, required this.bookModel,
   });
+
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +35,7 @@ class BookHeaderContainer extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
             ),
-            child: const BookCoverCard(),
+            child:  BookCoverCard(imageUrl: bookModel.volumeInfo!.imageLinks!.thumbnail,),
           ),
         ),
         Positioned(
