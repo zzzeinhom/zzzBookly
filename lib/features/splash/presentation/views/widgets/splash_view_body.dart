@@ -61,14 +61,13 @@ class _SplashViewBodyState extends State<SplashViewBody>
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // Constrained Image with Max Size
           SafeArea(
             child: SizedBox(
               width: MediaQuery.of(context).size.width,
               child: ConstrainedBox(
                 constraints: const BoxConstraints(
-                  maxWidth: 500, // Set maximum width
-                  maxHeight: 500, // Set maximum height
+                  maxWidth: 500,
+                  maxHeight: 500,
                 ),
                 child: const Image(image: AssetImage(AssetsData.splash)),
               ),
@@ -85,28 +84,18 @@ class _SplashViewBodyState extends State<SplashViewBody>
                 child: Column(
                   children: [
                     Text(
-                      "Keep reading,",
+                      "Keep reading,\nYou 'll fall in love",
                       style: Theme.of(context).textTheme.headlineLarge,
+                      textAlign: TextAlign.center,
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                    Text(
-                      "You 'll fall in love",
-                      style: Theme.of(context).textTheme.headlineLarge,
-                    ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.03),
                     Text(
-                      "A library of bite-size eBooks on soft skills",
+                      "A library of bite-size business eBooks on soft skills"
+                          " and personal development by industry-leading"
+                          " experts through just one subscription",
                       style: Theme.of(context).textTheme.labelSmall,
-                    ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                    Text(
-                      "and personal development by industy-leading",
-                      style: Theme.of(context).textTheme.labelSmall,
-                    ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-                    Text(
-                      "experts through just one subscription",
-                      style: Theme.of(context).textTheme.labelSmall,
+                      textAlign: TextAlign.center,
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.1),
                     FloatingActionButton(

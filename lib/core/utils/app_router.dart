@@ -4,6 +4,8 @@ import 'package:zzzbookly/features/home/presentaion/views/book_details_view.dart
 import 'package:zzzbookly/features/home/presentaion/views/home_view.dart';
 import 'package:zzzbookly/features/splash/presentation/views/splash_view.dart';
 
+import '../../features/home/data/models/book_model/book_model.dart';
+
 abstract class AppRouter {
   static const kSplashView = '/';
   static const kHomeView = '/homeView';
@@ -19,7 +21,9 @@ abstract class AppRouter {
       GoRoute(path: kHomeView, builder: (context, state) => const HomeView()),
       GoRoute(
           path: kBookDetailsView,
-          builder: (context, state) => const BookDetails()),
+          builder: (context, state) => BookDetails(
+            bookModel: state.extra as BookModel,
+          )),
       GoRoute(
           path: kFetchBooks,
           builder: (context, state) => const ListingBooksView()),

@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher_string.dart';
+import 'package:zzzbookly/features/home/data/models/book_model/book_model.dart';
 import 'package:zzzbookly/features/home/presentaion/views/widgets/book_cover_card_list.dart';
 
 class BooklyTabBarView extends StatelessWidget {
   const BooklyTabBarView({
     super.key,
-    required TabController tabController,
-    required this.overview,
-    required this.details,
+    required TabController tabController, required this.bookModel,
   }) : _tabController = tabController;
 
   final TabController _tabController;
-  final String overview;
-  final String details;
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +28,9 @@ class BooklyTabBarView extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(height: 16),
-              Text(overview, style: Theme.of(context).textTheme.bodyLarge),
+              Text(bookModel.volumeInfo!.description ??
+                  "No description available" ,
+                  style: Theme.of(context).textTheme.bodyLarge),
               const SizedBox(height: 16),
               Divider(
                   color: Theme.of(context).colorScheme.tertiary,
@@ -43,7 +44,6 @@ class BooklyTabBarView extends StatelessWidget {
               const BookCoverList(
                 height: 200,
               ),
-              const SizedBox(height: 40),
             ],
           ),
         ),
@@ -51,9 +51,33 @@ class BooklyTabBarView extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.all(16),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+
             children: [
-              Text(details, style: Theme.of(context).textTheme.bodyLarge),
-              const SizedBox(height: 40),
+              Text(
+                "Book Details",
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              const SizedBox(height: 16),
+              Text("Title: ${bookModel.volumeInfo!.title}", style: Theme.of(context).textTheme.bodyLarge),
+              Text("Authors: ${bookModel.volumeInfo!.authors?.join(", ") ?? "Unknown"}", style: Theme.of(context).textTheme.bodyLarge),
+              Text("Publisher: ${bookModel.volumeInfo!.publisher ?? "Unknown"}", style: Theme.of(context).textTheme.bodyLarge),
+              Text("Published Date: ${bookModel.volumeInfo!.publishedDate ?? "Unknown"}", style: Theme.of(context).textTheme.bodyLarge),
+              Text("Page Count: ${bookModel.volumeInfo!.pageCount ?? "Unknown"}", style: Theme.of(context).textTheme.bodyLarge),
+              Text("Categories: ${bookModel.volumeInfo!.categories?.join(", ") ?? "Unknown"}", style: Theme.of(context).textTheme.bodyLarge),
+              Text("Language: ${bookModel.volumeInfo!.language ?? "Unknown"}", style: Theme.of(context).textTheme.bodyLarge),
+              Text("Maturity Rating: ${bookModel.volumeInfo!.maturityRating ?? "Unknown"}", style: Theme.of(context).textTheme.bodyLarge),
+              Text("Content Version: ${bookModel.volumeInfo!.contentVersion ?? "Unknown"}", style: Theme.of(context).textTheme.bodyLarge),
+              Text("Print Type: ${bookModel.volumeInfo!.printType ?? "Unknown"}", style: Theme.of(context).textTheme.bodyLarge),
+              SizedBox(
+                width: double.infinity,
+                child: InkWell(
+                  child: Text("<<<<<<<<<<Info Link>>>>>>>>>>", textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodyLarge),
+                  onTap: () {
+                    launchUrlString(bookModel.volumeInfo!.infoLink!);
+                  },
+                ),
+              ),
             ],
           ),
         ),

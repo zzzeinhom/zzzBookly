@@ -1,12 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class BottomButtons extends StatelessWidget {
   final BuildContext context;
+  final String downloadLink;
+  final String previewLink;
 
-  const BottomButtons({required this.context});
+  const BottomButtons({required this.context, required this.downloadLink, required this.previewLink});
+
+
 
   @override
   Widget build(BuildContext context) {
+    bool downloadAval = true;
+    bool previewAval = true;
+    if (downloadLink == '') {
+      downloadAval = false;
+    }
+    if (previewLink == '') {
+      previewAval = false;
+    }
     return Row(
       children: [
         Expanded(
@@ -16,10 +29,12 @@ class BottomButtons extends StatelessWidget {
               left: 16,
               color: Theme.of(context).colorScheme.primary,
             ),
-            onPressed: () {},
-            child: const Text(
-              "Buy Now",
-              style: TextStyle(color: Colors.white),
+            onPressed: () {
+              launchUrlString(downloadLink);
+            },
+            child:  Text(
+              downloadAval ? "Download" : "Download Not Available",
+              style: const TextStyle(color: Colors.white),
             ),
           ),
         ),
@@ -30,9 +45,11 @@ class BottomButtons extends StatelessWidget {
               right: 16,
               color: Theme.of(context).colorScheme.tertiary,
             ),
-            onPressed: () {},
+            onPressed: () {
+              launchUrlString(previewLink);
+            },
             child: Text(
-              "Free Preview",
+              previewAval ? "Preview" : "Preview Not Available",
               style: TextStyle(color: Theme.of(context).colorScheme.primary),
             ),
           ),

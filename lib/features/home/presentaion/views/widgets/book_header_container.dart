@@ -35,7 +35,7 @@ class BookHeaderContainer extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
             ),
-            child:  BookCoverCard(imageUrl: bookModel.volumeInfo!.imageLinks!.thumbnail,),
+            child:  BookCoverCard(bookModel: bookModel,),
           ),
         ),
         Positioned(
@@ -48,11 +48,11 @@ class BookHeaderContainer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const BookName(),
-                const SizedBox(height: 4),
-                const AuthorName(),
-                const SizedBox(height: 8),
-                const ReleaseDate(),
+                 BookName(bookName: bookModel.volumeInfo!.title ?? "Unknown"),
+                 const SizedBox(height: 4),
+                 AuthorName(authorName: bookModel.volumeInfo!.authors?[0] ?? "Unknown",),
+                 const SizedBox(height: 8),
+                 ReleaseDate(releaseDate: bookModel.volumeInfo!.publishedDate ?? "Unknown",),
                 BookRate(
                   textStyle: Theme.of(context).textTheme.displayMedium,
                   iconSize: 20,

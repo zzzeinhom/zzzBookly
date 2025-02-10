@@ -14,7 +14,7 @@ class BookItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kBookDetailsView);
+        GoRouter.of(context).push(AppRouter.kBookDetailsView, extra: bookModel);
       },
       child: Container(
         height: 150,
@@ -30,7 +30,7 @@ class BookItem extends StatelessWidget {
               ),
             ]),
         child: Row(children: [
-          BookCoverCard(imageUrl: bookModel.volumeInfo!.imageLinks!.thumbnail,),
+          BookCoverCard(bookModel: bookModel,),
           const SizedBox(
             width: 16,
           ),

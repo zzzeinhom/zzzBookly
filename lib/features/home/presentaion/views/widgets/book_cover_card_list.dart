@@ -25,8 +25,7 @@ class BookCoverList extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: BookCoverCard(
-                    imageUrl:
-                        state.books[index].volumeInfo!.imageLinks!.thumbnail!,
+                    bookModel: state.books[index],
                   ),
                 );
               },

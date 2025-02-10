@@ -31,18 +31,7 @@ class BooklyAppBar extends StatelessWidget {
                 onPressed: () => Navigator.pop(context),
                 iconSize: 32,
               ),
-            if (!showBackArrow)
-              IconButton(
-                icon: Icon(
-                  FontAwesomeIcons.bars,
-                  color: Theme.of(context).colorScheme.onSecondary,
-                ),
-                onPressed: () {
-                  return Scaffold.of(context).openDrawer();
-                },
-                iconSize: 32,
-              ),
-            const SizedBox(width: 16),
+            if (showBackArrow) const SizedBox(width: 16),
             Expanded(
               child: Text(
                 title,

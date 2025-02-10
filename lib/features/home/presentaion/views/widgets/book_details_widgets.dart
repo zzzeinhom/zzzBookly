@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 
 class BookName extends StatelessWidget {
   const BookName({
-    super.key,
+    super.key, required this.bookName
   });
+
+  final String bookName;
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      'PRINCESS FREEDOM',
+      bookName,
       style: Theme.of(context).textTheme.titleMedium,
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
@@ -18,8 +20,10 @@ class BookName extends StatelessWidget {
 
 class ReleaseDate extends StatelessWidget {
   const ReleaseDate({
-    super.key,
+    super.key, required this.releaseDate,
   });
+
+  final String releaseDate;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +39,7 @@ class ReleaseDate extends StatelessWidget {
         ),
         Expanded(
           child: Text(
-            '14 August 2004',
+            releaseDate,
             style: Theme.of(context).textTheme.labelSmall,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
@@ -48,9 +52,10 @@ class ReleaseDate extends StatelessWidget {
 
 class AuthorName extends StatelessWidget {
   const AuthorName({
-    super.key,
+    super.key, required this.authorName,
   });
 
+  final String authorName;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -65,7 +70,7 @@ class AuthorName extends StatelessWidget {
         ),
         Expanded(
           child: Text(
-            'GRIGORII ARCHEMBALD',
+            authorName,
             style: Theme.of(context).textTheme.labelSmall,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,

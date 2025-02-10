@@ -8,6 +8,7 @@ class VolumeInfo extends Equatable {
   final String? title;
   final List<dynamic>? authors;
   final String? publisher;
+  final String? publishedDate;
   final String? description;
   final ReadingModes? readingModes;
   final int? pageCount;
@@ -27,6 +28,7 @@ class VolumeInfo extends Equatable {
     this.title,
     this.authors,
     this.publisher,
+    this.publishedDate,
     this.description,
     this.readingModes,
     this.pageCount,
@@ -47,6 +49,7 @@ class VolumeInfo extends Equatable {
         title: json['title'] as String?,
         authors: (json['authors'] as List<dynamic>?)?.cast<String>(),
         publisher: json['publisher'] as String?,
+        publishedDate: json["publishedDate"] as String?,
         description: json['description'] as String?,
         readingModes: json['readingModes'] == null
             ? null
@@ -75,6 +78,7 @@ class VolumeInfo extends Equatable {
         'title': title,
         'authors': authors,
         'publisher': publisher,
+        'publishedDate': publishedDate,
         'description': description,
         'readingModes': readingModes?.toJson(),
         'pageCount': pageCount,
@@ -97,6 +101,7 @@ class VolumeInfo extends Equatable {
       title,
       authors,
       publisher,
+      publishedDate,
       description,
       readingModes,
       pageCount,
