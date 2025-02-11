@@ -7,6 +7,8 @@ import 'package:zzzbookly/features/home/data/repos/home_repo_impl.dart';
 import 'package:zzzbookly/features/home/presentaion/managers/featured_books_cubit/featured_books_cubit.dart';
 import 'package:zzzbookly/features/home/presentaion/managers/tranding_books_cubit/tranding_books_cubit.dart';
 
+import 'features/home/presentaion/managers/search_books_cubit/search_books_cubit.dart';
+
 void main() {
   setupServiceLocator();
   runApp(const BooklyApp());
@@ -26,6 +28,9 @@ class BooklyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => TrandingBooksCubit(getIt.get<HomeRepoImpl>())
             ..fetchTrandingBooks(),
+        ),
+        BlocProvider(
+          create: (context) => SearchBooksCubit(getIt.get<HomeRepoImpl>()),
         ),
       ],
       child: MaterialApp.router(

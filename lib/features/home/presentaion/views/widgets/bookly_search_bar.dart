@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:go_router/go_router.dart';
-
-import '../../../../../core/utils/app_router.dart';
+import 'package:zzzbookly/features/home/presentaion/managers/search_books_cubit/search_books_cubit.dart';
 
 class BooklySearchBar extends StatefulWidget {
   const BooklySearchBar({super.key});
@@ -45,7 +44,7 @@ class _BooklySearchBarState extends State<BooklySearchBar> {
                   query = value;
                 });
                 FocusManager.instance.primaryFocus?.unfocus();
-                GoRouter.of(context).push(AppRouter.kSearchBooks, extra: query);
+                BlocProvider.of<SearchBooksCubit>(context).searchForBooks(query);
               },
               decoration: InputDecoration(
                 hintText: "Search your books",
@@ -72,7 +71,8 @@ class _BooklySearchBarState extends State<BooklySearchBar> {
                 color: Theme.of(context).colorScheme.secondary,
                 onPressed: () {
                   FocusManager.instance.primaryFocus?.unfocus();
-                  GoRouter.of(context).push(AppRouter.kSearchBooks, extra: query);
+                  BlocProvider.of<SearchBooksCubit>(context).searchForBooks(query);
+
                 },
                 iconSize: 24,
               )),

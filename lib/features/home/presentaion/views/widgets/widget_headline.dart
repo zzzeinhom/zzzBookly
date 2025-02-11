@@ -4,12 +4,9 @@ class WidgetHeadline extends StatelessWidget {
   const WidgetHeadline(
       {super.key,
       required this.title,
-      required this.onSeeAll,
-      this.hasSeeAll = true});
+});
 
   final String title;
-  final Function() onSeeAll;
-  final bool hasSeeAll;
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +20,6 @@ class WidgetHeadline extends StatelessWidget {
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
-        if (hasSeeAll)
-          TextButton(
-            onPressed: onSeeAll,
-            child: Text(
-              "See All",
-              style: Theme.of(context).textTheme.labelLarge,
-            ),
-          ),
       ],
     );
   }
